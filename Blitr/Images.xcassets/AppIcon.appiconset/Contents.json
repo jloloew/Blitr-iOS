@@ -151,6 +151,18 @@
       "scale" : "1x"
     },
     {
+      "size" : "60x60",
+      "idiom" : "car",
+      "filename" : "Icon-CarPlay-60@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "car",
+      "filename" : "Icon-CarPlay-60@3x.png",
+      "scale" : "3x"
+    },
+    {
       "size" : "24x24",
       "idiom" : "watch",
       "filename" : "Icon-watch-38-notification-center@2x.png",
