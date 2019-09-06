@@ -7,5 +7,7 @@ target 'Blitr' do
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'PebbleKit'
+
+pod 'SimulatorStatusMagic', :configurations => ['Debug']
 end
 

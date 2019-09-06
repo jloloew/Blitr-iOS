@@ -22,23 +22,27 @@ PODS:
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.1)
   - PebbleKit (2.4)
+  - SimulatorStatusMagic (2.1)
 
 DEPENDENCIES:
   - AFNetworking
   - MBProgressHUD
   - PebbleKit
+  - SimulatorStatusMagic
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - MBProgressHUD
     - PebbleKit
+    - SimulatorStatusMagic
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   PebbleKit: e8650801927bd7272da83c8a21fb94d2af24465b
+  SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
 
-PODFILE CHECKSUM: 2d84d04fbd4367346143b1c5163f3ad279da684e
+PODFILE CHECKSUM: 54a422651bf36eb8a7efe48523b7466a9d4577ca
 
 COCOAPODS: 1.7.5
