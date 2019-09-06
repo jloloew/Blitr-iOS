@@ -29,8 +29,8 @@ static const CGFloat kAddressHeight = 24.0f;
 
 typedef NSUInteger AppUpdateVersionNumber;
 __unused static const AppUpdateVersionNumber kNullAppVersion = 0;
-static const AppUpdateVersionNumber kCurrentAppVersion = 1;
-static const AppUpdateVersionNumber kReplacementAppVersion = 2;
+//static const AppUpdateVersionNumber kCurrentAppVersion = 1;
+//static const AppUpdateVersionNumber kReplacementAppVersion = 2;
 static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recently ignored update version number";
 
 
@@ -169,10 +169,12 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
         self.sendToPebble.enabled = [connected boolValue];
     }];
     
+    /*
     // Prompt to update to a newer version of this app, if necessary.
     if ([self shouldPresentAppListingMigrationPromptForUpdateVersion:kReplacementAppVersion]) {
         [self presentAppListingMigrationPromptForUpdateVersion:kReplacementAppVersion];
     }
+    */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -194,49 +196,11 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 #pragma mark App Migration Stuff
 
 - (BOOL)shouldPresentAppListingMigrationPromptForUpdateVersion:(AppUpdateVersionNumber)updateVersion {
-    if (self.hasPresentedAppListingMigrationPromptSinceAppLaunch) {
-        return NO;
-    }
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *lastIgnoredUpdateVersion = [defaults objectForKey:kMostRecentIgnoredUpdateVersionNumberKey];
-    AppUpdateVersionNumber lastVersionForWhichWeShouldNotPrompt = MAX([lastIgnoredUpdateVersion unsignedIntegerValue], kCurrentAppVersion);
-    // Only present the prompt if we'd be prompting for a newer version than the most recent ignored version.
-    return updateVersion > lastVersionForWhichWeShouldNotPrompt;
+    return NO;
 }
 
 - (void)presentAppListingMigrationPromptForUpdateVersion:(AppUpdateVersionNumber)updateVersion {
-    UIAlertController *__block alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Update Available", nil)
-                                                                             message:NSLocalizedString(@"An update to this app is available in the App Store.", nil)
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    
-    // Add a "Learn More" action.
-    UIAlertAction *learnMoreAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Learn More", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
-        // Show a sheet to explain the transition to the user and provide a link to the new version of the app.
-        // The next time this app is launched, this prompt will appear again.
-        [self performSegueWithIdentifier:@"showMigrationEducation" sender:self];
-    }];
-    [alertController addAction:learnMoreAction];
-    
-    // Add a "Remind Me Later" action.
-    UIAlertAction *remindMeLaterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Remind Me Later", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
-        // If we've previously recorded that we should never prompt for a certain previous update, leave that record as-is. This means that the next time the app is launched, this prompt will appear again because this update is newer than the last ignored update.
-        // Do nothing.
-    }];
-    [alertController addAction:remindMeLaterAction];
-    // [alertController setPreferredAction:remindMeLaterAction];
-    
-    // Add a "Don't Show Again" action.
-    UIAlertAction *dontShowAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Show Again", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
-        // Record that we shouldn't prompt for this update again, then dismiss the alert.
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[NSNumber numberWithUnsignedInteger:updateVersion]
-                     forKey:kMostRecentIgnoredUpdateVersionNumberKey];
-    }];
-    [alertController addAction:dontShowAgainAction];
-    
-    [self presentViewController:alertController animated:YES completion:^{}];
-    self.hasPresentedAppListingMigrationPromptSinceAppLaunch = YES;
+    // Empty.
 }
 
 #pragma mark Browser Stuff
