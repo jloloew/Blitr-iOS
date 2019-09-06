@@ -9,7 +9,7 @@
 #import "STLAMigrationEducationViewController.h"
 
 
-static NSString *const kAppStoreLinkForRebrandedApp = @"https://www.apple.com";  // FIXME: Fill in this link.
+static NSString *const kAppStoreLinkForRebrandedApp = @"https://apps.apple.com/us/app/blitr/id1477528304?ls=1";
 
 
 @interface STLAMigrationEducationViewController ()
