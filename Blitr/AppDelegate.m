@@ -17,10 +17,10 @@ const static int sMaxWordLength = 8;
 NSString *const kSTLASavedURLKey = @"savedURL";
 
 /// The URL scheme used to open non-secure links in Stela.app.
-static NSString *kSTLAProprietaryInsecureURLScheme = @"stela";
+static NSString *kSTLAProprietaryInsecureURLScheme = @"blitr";
 
 /// The URL scheme used to open secure links in Stela.app.
-static NSString *kSTLAProprietarySecureURLScheme = @"stelas";
+static NSString *kSTLAProprietarySecureURLScheme = @"blitrs";
 
 
 @interface AppDelegate ()
@@ -29,7 +29,7 @@ static NSString *kSTLAProprietarySecureURLScheme = @"stelas";
 ///
 /// @param url The URL to validate.
 /// @return YES if the URL is a valid URL, NO otherwise.
-- (BOOL)isValidStelaURL:(NSURL *)url;
+- (BOOL)isValidBlitrURL:(NSURL *)url;
 
 /// Takes a string and splits it into words.
 ///
@@ -72,7 +72,7 @@ static NSString *kSTLAProprietarySecureURLScheme = @"stelas";
 #pragma mark URL stuff
 
 
-- (BOOL)isValidStelaURL:(NSURL *)url {
+- (BOOL)isValidBlitrURL:(NSURL *)url {
 	if ([url isFileURL]) {
 		return NO;
 	}
@@ -95,7 +95,7 @@ static NSString *kSTLAProprietarySecureURLScheme = @"stelas";
 {
 	NSURL *url = [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
 	if (url) {
-		if (![self isValidStelaURL:url]) {
+		if (![self isValidBlitrURL:url]) {
 			return NO;
 		}
 	}
@@ -109,7 +109,7 @@ static NSString *kSTLAProprietarySecureURLScheme = @"stelas";
   sourceApplication:(NSString *)sourceApplication
 		 annotation:(id)annotation
 {
-	if (![self isValidStelaURL:url]) {
+	if (![self isValidBlitrURL:url]) {
 		return NO;
 	}
 	

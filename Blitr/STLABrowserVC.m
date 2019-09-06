@@ -346,7 +346,7 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 			 // Turn the responseObject into useful text.
 			 if (![responseObject isKindOfClass:[NSDictionary class]]) {  // Safety check.
 				 NSLog(@"Error: responseObject is not a dictionary.");
-				 requestFailed(NSLocalizedString(@"Stela's servers aren't able to turn this page into text right now. Please try again later.", nil));
+				 requestFailed(NSLocalizedString(@"Blitr's servers aren't able to turn this page into text right now. Please try again later.", nil));
 				 return;
 			 }
 			 
@@ -354,7 +354,7 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 			 NSString *blockText = responseDict[@"text"];
 			 if (!blockText) {  // Safety check.
 				 NSLog(@"Error: couldn't get text from JSON response.");
-				 requestFailed(NSLocalizedString(@"Unable to get text from website. Stela doesn't work on PDFs, documents, or images.", nil));
+				 requestFailed(NSLocalizedString(@"Unable to get text from website. Blitr doesn't work on PDFs, documents, or images.", nil));
 				 return;
 			 }
 			 
@@ -376,7 +376,7 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 		 }
 		 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			 NSLog(@"Failed to get text from current website: %@", error);
-			 requestFailed(NSLocalizedString(@"Unable to get text from website. Stela doesn't work on PDFs, documents, or images.", nil));
+			 requestFailed(NSLocalizedString(@"Unable to get text from website. Blitr doesn't work on PDFs, documents, or images.", nil));
 		 }];
 }
 

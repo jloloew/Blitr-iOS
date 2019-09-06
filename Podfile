@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
 
-target 'Stela' do
+target 'Blitr' do
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'PebbleKit'

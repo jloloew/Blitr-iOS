@@ -1,13 +1,13 @@
-Stela-iOS
+Blitr-iOS
 =========
 
-[![Build Status](https://travis-ci.org/jloloew/Stela-iOS.svg)](https://travis-ci.org/jloloew/Stela-iOS)
+[![Build Status](https://travis-ci.org/jloloew/Blitr-iOS.svg)](https://travis-ci.org/jloloew/Blitr-iOS)
 
-The Stela app for iOS goes great with the [Pebble Stela app](https://github.com/jloloew/Stela-Pebble).
+The Blitr app for iOS goes great with the [Pebble Stela app](https://github.com/jloloew/Stela-Pebble).
 
-Stela requires a Pebble smartwatch to function.
+Blitr requires a Pebble smartwatch to function.
 
-Read on your Pebble smartwatch! Just browse to the article you want to read, tap the Stela button, and off you go! It's so easy, your mother can do it!
+Read on your Pebble smartwatch! Just browse to the article you want to read, tap the Blitr button, and off you go! It's so easy, your mother can do it!
 
 When you press the button on your iPhone, Stela for Pebble is automatically launched, and the article is sent to your Pebble.
 
