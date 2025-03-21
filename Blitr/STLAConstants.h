@@ -9,6 +9,8 @@
 #ifndef Stela_Constants_h
 #define Stela_Constants_h
 
+@import Foundation;
+
 
 #pragma mark General iOS Stuff
 
