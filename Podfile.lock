@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - MBProgressHUD (0.9.1)
+  - MBProgressHUD (1.2.0)
   - PebbleKit (2.4)
   - SimulatorStatusMagic (2.1)
 
@@ -39,7 +39,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   PebbleKit: e8650801927bd7272da83c8a21fb94d2af24465b
   SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
 

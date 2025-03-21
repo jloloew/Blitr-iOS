@@ -280,16 +280,16 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 - (IBAction)sendToPebble:(id)sender {
 	// Start a spinner so the user knows something's happening.
 	self.progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-	self.progressHUD.labelText = NSLocalizedString(@"Sending...", nil);
+	self.progressHUD.label.text = NSLocalizedString(@"Sending...", nil);
 	self.progressHUD.minShowTime = 3;  // Keep the spinner onscreen for at least 3 seconds.
-	self.progressHUD.dimBackground = YES;
+	self.progressHUD.backgroundView.style = MBProgressHUDBackgroundStyleBlur;
 	
 	void (^requestFailed)(NSString *errorMessage) = ^void(NSString *errorMessage) {
 		// Make my life just a little easier.
 		NSLog(@"Failed to get text for article at URL: %@", self.addressField.text);
 		
 		// Hide the HUD.
-		[self.progressHUD hide:YES];
+		[self.progressHUD hideAnimated:YES];
 		// Tell the user that retrieval failed.
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error Retrieving Webpage", nil)
 																				 message:errorMessage ?: @""
