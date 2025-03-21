@@ -136,12 +136,9 @@
 	pebbleCentral.delegate = self;
 	
 	// Set the UUID of the app.
-	uuid_t stelaUUIDBytes;
 	NSUUID *stelaUUID = [[NSUUID alloc] initWithUUIDString:stelaUUIDString];
-	[stelaUUID getUUIDBytes:stelaUUIDBytes];
-	NSData *UUIDData = [NSData dataWithBytes:stelaUUIDBytes length:sizeof(uuid_t)];
-	[pebbleCentral setAppUUID:UUIDData];
-	if (![pebbleCentral hasValidAppUUID]) {  // Safety check.
+	[pebbleCentral setAppUUID:stelaUUID];
+	if (pebbleCentral.appUUID == nil) {  // Safety check.
 		NSLog(@"%s:%d: Our app UDID is invalid!", __PRETTY_FUNCTION__, __LINE__);
 	}
 	
@@ -272,11 +269,11 @@
 		if ([key isKindOfClass:[NSNumber class]]) {
 			// Convert the key.
 			NSInteger intKey = [key integerValue];
-			NSNumber *keyForPebble = [NSNumber numberWithInt32:(int32_t)intKey];
+			NSNumber *keyForPebble = [NSNumber pb_numberWithInt32:(int32_t)intKey];
 			// Convert the value.
 			id value = dictionary[key];
 			if ([value isKindOfClass:[NSNumber class]]) {
-				NSNumber *newValue = [NSNumber numberWithInt32:(int32_t)[value integerValue]];
+				NSNumber *newValue = [NSNumber pb_numberWithInt32:(int32_t)[value integerValue]];
 				dict[keyForPebble] = newValue;
 			} else if ([value isKindOfClass:[NSString class]] ||
 					   [value isKindOfClass:[NSData class]]) {
@@ -413,7 +410,7 @@
 			
 			#if DEBUG
 				// Log the size of the dictionary we're trying to send.
-				NSData *data = [dict pebbleDictionaryData:nil];
+				NSData *data = [dict pb_pebbleDictionaryData:nil];
 				NSLog(@"%s:%d: sending message %lu containing a dictionary with size %lu and contents: %@",
 					  __PRETTY_FUNCTION__, __LINE__, (unsigned long)messagesSent, (unsigned long)data.length, dict);
 			#endif
@@ -487,9 +484,9 @@
 - (void)sendVersion:(Version)version
 		 completion:(void (^)(PBWatch *watch, NSDictionary *update, NSError *error))handler
 {
-	NSDictionary *message = @{@(VERSION_MAJOR_KEY): [NSNumber numberWithUint8:version.major],
-							  @(VERSION_MINOR_KEY): [NSNumber numberWithUint8:version.minor],
-							  @(VERSION_PATCH_KEY): [NSNumber numberWithUint8:version.patch]};
+	NSDictionary *message = @{@(VERSION_MAJOR_KEY): [NSNumber pb_numberWithUint8:version.major],
+							  @(VERSION_MINOR_KEY): [NSNumber pb_numberWithUint8:version.minor],
+							  @(VERSION_PATCH_KEY): [NSNumber pb_numberWithUint8:version.patch]};
 	[self sendMessage:message completion:handler];
 }
 
@@ -628,9 +625,9 @@
 							minor:(NSNumber *)minor
 							patch:(NSNumber *)patch
 {
-	VERSION_MAJOR_KEY_t v_major = [major uint8Value];
-	VERSION_MINOR_KEY_t v_minor = [minor uint8Value];
-	VERSION_PATCH_KEY_t v_patch = [patch uint8Value];
+	VERSION_MAJOR_KEY_t v_major = [major pb_uint8Value];
+	VERSION_MINOR_KEY_t v_minor = [minor pb_uint8Value];
+	VERSION_PATCH_KEY_t v_patch = [patch pb_uint8Value];
 	Version const ver = { .major = v_major, .minor = v_minor, .patch = v_patch };
 	
 	self.watchVersion = ver;
