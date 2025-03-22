@@ -331,7 +331,7 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 				 if (success) {
 					 NSLog(@"Successfully sent words to the watch.");
 					 // Hide the HUD.
-					 [self.progressHUD hide:YES];
+					 [self.progressHUD hideAnimated:YES];
 				 } else {
 					 NSLog(@"ERROR. Failed to send words to the watch.");
 //					 requestFailed(NSLocalizedString(@"Something went wrong. Please wait a few moments, then try again.", nil));
