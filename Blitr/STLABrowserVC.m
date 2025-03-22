@@ -301,12 +301,12 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 	};
 	
 	// Turn the webpage into an array of words.
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 	NSDictionary *requestParameters = @{ @"url": self.addressField.text,
 										 @"apikey": API_KEY,
 										 @"outputMode": @"json" };
-	[manager GET:API_URL parameters:requestParameters
-		 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[manager GET:API_URL parameters:requestParameters progress: nil
+		 success:^(NSURLSessionTask *task, id responseObject) {
 			 // Turn the responseObject into useful text.
 			 if (![responseObject isKindOfClass:[NSDictionary class]]) {  // Safety check.
 				 NSLog(@"Error: responseObject is not a dictionary.");
@@ -338,7 +338,7 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 				 }
 			 }];
 		 }
-		 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		 failure:^(NSURLSessionTask *task, NSError *error) {
 			 NSLog(@"Failed to get text from current website: %@", error);
 			 requestFailed(NSLocalizedString(@"Unable to get text from website. Blitr doesn't work on PDFs, documents, or images.", nil));
 		 }];
