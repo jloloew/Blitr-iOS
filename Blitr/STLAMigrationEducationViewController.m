@@ -41,7 +41,7 @@ static NSString *const kAppStoreLinkForRebrandedApp = @"https://apps.apple.com/u
 }
 
 - (IBAction)viewOnAppStoreButtonTapped:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreLinkForRebrandedApp]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreLinkForRebrandedApp] options:@{} completionHandler:nil];
 }
 
 @end

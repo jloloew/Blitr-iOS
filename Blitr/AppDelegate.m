@@ -106,8 +106,7 @@ static NSString *kSTLAProprietarySecureURLScheme = @"blitrs";
 // Actually go and open the URL passed in.
 - (BOOL)application:(UIApplication *)application
 			openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-		 annotation:(id)annotation
+			options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
 	if (![self isValidBlitrURL:url]) {
 		return NO;

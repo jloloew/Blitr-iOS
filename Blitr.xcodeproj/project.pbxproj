@@ -151,6 +151,7 @@
 				8BDA0191703688A7E44904D9 /* Pods */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		B81DA2AA18F8C61800C49C21 /* Products */ = {
 			isa = PBXGroup;

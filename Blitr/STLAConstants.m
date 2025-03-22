@@ -40,7 +40,7 @@ Version const stla_unknown_version_number = { 0, 255, 255 };
 
 #pragma mark Version functions
 
-Version stla_get_iOS_Stela_version() {
+Version stla_get_iOS_Stela_version(void) {
 	NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
 	NSString *verStr = infoDict[@"CFBundleShortVersionString"];
 	verStr = [NSString stringWithFormat:@"%@.%hhu",
