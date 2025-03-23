@@ -27,6 +27,7 @@
 		B81DA2F118F8C6F300C49C21 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81DA2EE18F8C6F300C49C21 /* CoreMotion.framework */; };
 		B81DA2F318F8C6FD00C49C21 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81DA2F218F8C6FD00C49C21 /* MessageUI.framework */; };
 		B85321241A3A268A00F3BF6D /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B85321231A3A268A00F3BF6D /* iTunesArtwork.png */; };
+		B86A2E052D8F48B2004FC1D5 /* STLAWebArticleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = B86A2E042D8F48B2004FC1D5 /* STLAWebArticleExtractor.m */; };
 		B86E1B2C18F8C84800FAD644 /* STLABrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B86E1B2B18F8C84800FAD644 /* STLABrowserVC.m */; };
 		B8B0C4631A7C316700EDE404 /* STLAMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0C4621A7C316700EDE404 /* STLAMessenger.m */; };
 		B8B0C4661A7C448100EDE404 /* STLAWordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B0C4651A7C448100EDE404 /* STLAWordManager.m */; };
@@ -87,6 +88,8 @@
 		B81DA2EE18F8C6F300C49C21 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B81DA2F218F8C6FD00C49C21 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B85321231A3A268A00F3BF6D /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		B86A2E042D8F48B2004FC1D5 /* STLAWebArticleExtractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLAWebArticleExtractor.m; sourceTree = "<group>"; };
+		B86A2E062D8F48C6004FC1D5 /* STLAWebArticleExtractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLAWebArticleExtractor.h; sourceTree = "<group>"; };
 		B86E1B2A18F8C84800FAD644 /* STLABrowserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLABrowserVC.h; sourceTree = "<group>"; };
 		B86E1B2B18F8C84800FAD644 /* STLABrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLABrowserVC.m; sourceTree = "<group>"; };
 		B8B0C4611A7C316700EDE404 /* STLAMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLAMessenger.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				B8B7C6AD230EB8A800D74ED9 /* STLAMigrationEducationViewController.h */,
 				B8B7C6AE230EB8A800D74ED9 /* STLAMigrationEducationViewController.m */,
 				B80D7D6B1AD88C3F00DD7822 /* STLAWatch.h */,
+				B86A2E062D8F48C6004FC1D5 /* STLAWebArticleExtractor.h */,
+				B86A2E042D8F48B2004FC1D5 /* STLAWebArticleExtractor.m */,
 				B8B0C4641A7C448100EDE404 /* STLAWordManager.h */,
 				B8B0C4651A7C448100EDE404 /* STLAWordManager.m */,
 				B81DA2B318F8C61800C49C21 /* Supporting Files */,
@@ -411,6 +416,7 @@
 				B8B7C6AF230EB8A800D74ED9 /* STLAMigrationEducationViewController.m in Sources */,
 				B86E1B2C18F8C84800FAD644 /* STLABrowserVC.m in Sources */,
 				B81DA2B918F8C61800C49C21 /* main.m in Sources */,
+				B86A2E052D8F48B2004FC1D5 /* STLAWebArticleExtractor.m in Sources */,
 				B8B0C4661A7C448100EDE404 /* STLAWordManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

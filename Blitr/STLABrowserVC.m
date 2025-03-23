@@ -10,7 +10,6 @@
 @import UIKit;
 @import WebKit;
 
-#import <AFNetworking.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
 #import "AppDelegate.h"
@@ -18,6 +17,7 @@
 #import "STLAConstants.h"
 #import "STLAMessenger.h"
 #import "STLABrowserVC.h"
+#import "STLAWebArticleExtractor.h"
 
 
 __unused static const CGFloat kNavBarHeight = 52.0f;
@@ -301,47 +301,26 @@ static NSString *const kMostRecentIgnoredUpdateVersionNumberKey = @"most recentl
 	};
 	
 	// Turn the webpage into an array of words.
-	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-	NSDictionary *requestParameters = @{ @"url": self.addressField.text,
-										 @"apikey": API_KEY,
-										 @"outputMode": @"json" };
-	[manager GET:API_URL parameters:requestParameters progress: nil
-		 success:^(NSURLSessionTask *task, id responseObject) {
-			 // Turn the responseObject into useful text.
-			 if (![responseObject isKindOfClass:[NSDictionary class]]) {  // Safety check.
-				 NSLog(@"Error: responseObject is not a dictionary.");
-				 requestFailed(NSLocalizedString(@"Blitr's servers aren't able to turn this page into text right now. Please try again later.", nil));
-				 return;
-			 }
-			 
-			 NSDictionary *responseDict = (NSDictionary *)responseObject;
-			 NSString *blockText = responseDict[@"text"];
-			 if (!blockText) {  // Safety check.
-				 NSLog(@"Error: couldn't get text from JSON response.");
-				 requestFailed(NSLocalizedString(@"Unable to get text from website. Blitr doesn't work on PDFs, documents, or images.", nil));
-				 return;
-			 }
-			 
-			 // This is an array of all the words on the page.
-			 NSArray *words = [blockText componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-			 
-			 // Send the words to the watch.
-			 STLAMessenger *messenger = [STLAMessenger defaultMessenger];
-			 [messenger sendStringsToWatch:words completion:^(BOOL success) {
-				 if (success) {
-					 NSLog(@"Successfully sent words to the watch.");
-					 // Hide the HUD.
-					 [self.progressHUD hideAnimated:YES];
-				 } else {
-					 NSLog(@"ERROR. Failed to send words to the watch.");
-//					 requestFailed(NSLocalizedString(@"Something went wrong. Please wait a few moments, then try again.", nil));
-				 }
-			 }];
-		 }
-		 failure:^(NSURLSessionTask *task, NSError *error) {
-			 NSLog(@"Failed to get text from current website: %@", error);
-			 requestFailed(NSLocalizedString(@"Unable to get text from website. Blitr doesn't work on PDFs, documents, or images.", nil));
-		 }];
+	STLAWebArticleExtractor *extractor = [[STLAWebArticleExtractor alloc] init];
+	[extractor extractArticleAtURL:self.addressField.text
+						   success:^(NSString *plainTextArticle) {
+		// This is an array of all the words on the page.
+		NSArray *words = [plainTextArticle componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
+		// Send the words to the watch.
+		STLAMessenger *messenger = [STLAMessenger defaultMessenger];
+		[messenger sendStringsToWatch:words completion:^(BOOL success) {
+			if (success) {
+				NSLog(@"Successfully sent words to the watch.");
+				// Hide the HUD.
+				[self.progressHUD hideAnimated:YES];
+			} else {
+				NSLog(@"ERROR. Failed to send words to the watch.");
+				//					 requestFailed(NSLocalizedString(@"Something went wrong. Please wait a few moments, then try again.", nil));
+			}
+		}];
+	}
+						   failure:requestFailed];
 }
 
 #pragma mark WKNavigationDelegate
